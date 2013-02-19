@@ -1,0 +1,14 @@
+c:\users\gustavo.torrico\documents\visual studio 2010\Projects\OreoMvvm\OreoMvvm\bin\Debug\OreoMvvm.dll
+c:\users\gustavo.torrico\documents\visual studio 2010\Projects\OreoMvvm\OreoMvvm\bin\Debug\OreoMvvm.pdb
+c:\users\gustavo.torrico\documents\visual studio 2010\Projects\OreoMvvm\OreoMvvm\obj\Debug\OreoMvvm.dll
+c:\users\gustavo.torrico\documents\visual studio 2010\Projects\OreoMvvm\OreoMvvm\obj\Debug\OreoMvvm.pdb
+C:\Users\gustavo.torrico\Documents\Visual Studio 2010\Projects\OreoMvvm\OreoMvvm\obj\Debug\Wizard\Views\MultiOptionGroupView.baml
+C:\Users\gustavo.torrico\Documents\Visual Studio 2010\Projects\OreoMvvm\OreoMvvm\obj\Debug\Wizard\Views\SingleOptionGroupView.baml
+C:\Users\gustavo.torrico\Documents\Visual Studio 2010\Projects\OreoMvvm\OreoMvvm\obj\Debug\Wizard\Views\MultiOptionGroupView.g.cs
+C:\Users\gustavo.torrico\Documents\Visual Studio 2010\Projects\OreoMvvm\OreoMvvm\obj\Debug\Wizard\Views\SingleOptionGroupView.g.cs
+C:\Users\gustavo.torrico\Documents\Visual Studio 2010\Projects\OreoMvvm\OreoMvvm\obj\Debug\Wizard\Views\WizardView.g.cs
+C:\Users\gustavo.torrico\Documents\Visual Studio 2010\Projects\OreoMvvm\OreoMvvm\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\gustavo.torrico\Documents\Visual Studio 2010\Projects\OreoMvvm\OreoMvvm\obj\Debug\OreoMvvm_MarkupCompile.cache
+C:\Users\gustavo.torrico\Documents\Visual Studio 2010\Projects\OreoMvvm\OreoMvvm\obj\Debug\OreoMvvm_MarkupCompile.lref
+C:\Users\gustavo.torrico\Documents\Visual Studio 2010\Projects\OreoMvvm\OreoMvvm\obj\Debug\Wizard\Views\WizardView.baml
+C:\Users\gustavo.torrico\Documents\Visual Studio 2010\Projects\OreoMvvm\OreoMvvm\obj\Debug\OreoMvvm.g.resources
