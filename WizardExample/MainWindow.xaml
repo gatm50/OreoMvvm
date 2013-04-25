@@ -5,8 +5,9 @@
     <Grid>
         <Canvas x:Name="wizardHost" Margin="12,12,12,41">
         </Canvas>
-        <Button Content="Cancel" Height="23" HorizontalAlignment="Left" Margin="416,276,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" Command="{Binding WizardVM.CancelCommand}"  />
-        <Button Content="Next" Height="23" HorizontalAlignment="Left" Margin="335,276,0,0" Name="button2" VerticalAlignment="Top" Width="75" Command="{Binding WizardVM.MoveNextCommand}" />
-        <Button Content="Back" Height="23" HorizontalAlignment="Left" Margin="254,276,0,0" Name="button3" VerticalAlignment="Top" Width="75" Command="{Binding WizardVM.MovePreviousCommand}" />
+        <Button Content="Cancel" Height="23" HorizontalAlignment="Left" Margin="416,276,0,0" Name="btnCancel" VerticalAlignment="Top" Width="75" Command="{Binding WizardVM.CancelCommand}" Click="btnCancel_Click" />
+        <Button Content="Next" Height="23" HorizontalAlignment="Left" Margin="254,276,0,0" Name="btnNext" VerticalAlignment="Top" Width="75" Command="{Binding WizardVM.MoveNextCommand}" />
+        <Button Content="Back" Height="23" HorizontalAlignment="Left" Margin="173,276,0,0" Name="btnBack" VerticalAlignment="Top" Width="75" Command="{Binding WizardVM.MovePreviousCommand}" />
+        <Button Content="Finish" Height="23" HorizontalAlignment="Left" Margin="335,276,0,0" Name="btnFinish" VerticalAlignment="Top" Width="75" Command="{Binding WizardVM.FinishWizardCommand}" Click="btnFinish_Click" />
     </Grid>
 </Window>

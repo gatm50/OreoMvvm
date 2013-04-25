@@ -10,6 +10,7 @@ namespace OreoMvvm.Wizard.ViewModels
     {
         ICommand MoveNextCommand { get; }
         ICommand MovePreviousCommand { get; }
+        ICommand FinishWizardCommand { get; }
         bool IsOnLastStep { get; }
     }
 
@@ -21,10 +22,11 @@ namespace OreoMvvm.Wizard.ViewModels
     /// <typeparam name="WizardBusinessObject">The object the wizard models.  Must have parameterless constructor because we will create it within.</typeparam>
     public class WizardViewModel<WizardBusinessObject> : BaseViewModel, IWizardViewModel where WizardBusinessObject : IWizardBusinessObject, new()
     {
-        private readonly WizardBusinessObject _businessObject;
+        private WizardBusinessObject _businessObject;
         private readonly StepManager<WizardBusinessObject> _stepManager;
         private RelayCommand _moveNextCommand;
         private RelayCommand _movePreviousCommand;
+        private RelayCommand _finishWizardCommand;
         private RelayCommand _cancelCommand;
 
         /// <summary>
@@ -47,6 +49,7 @@ namespace OreoMvvm.Wizard.ViewModels
         public WizardBusinessObject BusinessObject
         {
             get { return _businessObject; }
+            set { _businessObject = value; }
         }
 
         public LinkedListNode<CompleteStep<WizardBusinessObject>> CurrentLinkedListStep
@@ -153,13 +156,20 @@ namespace OreoMvvm.Wizard.ViewModels
         /// </summary>
         void MoveToNextStep()
         {
-            if ( CanMoveToNextStep )
+            if (CanMoveToNextStep)
             {
-                _stepManager.ReworkListBasedOn( this.CurrentLinkedListStep.Value.ViewModel.OnNext() );
-                this.CurrentLinkedListStep = this.CurrentLinkedListStep.Next;
-                //CurrentLinkedListStep.Value.ViewModel.BeforeShow();
-                this.CurrentLinkedListStep.Value.Visited = true;
+                if (CurrentLinkedListStep.Value.ViewModel.RunOnNextAsyncOperations())
+                    return;
+
+                this.MoveToNextStepSyncOperations();
             }
+        }
+
+        public void MoveToNextStepSyncOperations()
+        {
+            _stepManager.ReworkListBasedOn(CurrentLinkedListStep.Value.ViewModel.OnNext());
+            CurrentLinkedListStep = CurrentLinkedListStep.Next;
+            CurrentLinkedListStep.Value.Visited = true;
         }
 
         private void ActionsOnCurrentLinkedListStep( LinkedListNode<CompleteStep<WizardBusinessObject>> step )
@@ -182,6 +192,35 @@ namespace OreoMvvm.Wizard.ViewModels
         public bool IsOnLastStep
         {
             get { return this.CurrentLinkedListStep.Next == null; }
+        }
+
+        bool CanFinishWizard
+        {
+            get
+            {
+                if (this.IsOnLastStep && CurrentLinkedListStep.Value.ViewModel.IsValid())
+                    return true;
+                else
+                    return false;
+            }
+        }
+
+        public ICommand FinishWizardCommand
+        {
+            get
+            {
+                if (_finishWizardCommand == null)
+                {
+                    _finishWizardCommand = new RelayCommand(() => this.FinishWizard(), () => this.CanFinishWizard);
+                }
+                return _finishWizardCommand;
+            }
+        }
+
+        void FinishWizard()
+        {
+            if (this.CanFinishWizard)
+                return;
         }
     }
 }

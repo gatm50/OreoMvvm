@@ -90,12 +90,6 @@
                             Property="Visibility"
                             Value="Collapsed" />
                 </DataTrigger>
-                <DataTrigger Binding="{Binding Path=Visited}"
-                             Value="False">
-                    <Setter TargetName="bdOuter"
-                            Property="Visibility"
-                            Value="Collapsed" />
-                </DataTrigger>
             </DataTemplate.Triggers>
         </DataTemplate>
     </UserControl.Resources>

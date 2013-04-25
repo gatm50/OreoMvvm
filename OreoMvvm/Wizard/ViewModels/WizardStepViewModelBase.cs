@@ -66,11 +66,22 @@ namespace OreoMvvm.Wizard.ViewModels
         }
 
         /// <summary>
+        /// Run an Async Operation before go to the next step
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool RunOnNextAsyncOperations()
+        {
+            return false;
+        }
+
+        /// <summary>
         /// Returns true if the user has filled in this step properly
         /// and the wizard should allow the user to progress to the 
         /// next step in the workflow.
         /// </summary>
         public abstract bool IsValid();
+
+        public object ParentViewModel { get; set; }
 
         /// <summary>
         /// 

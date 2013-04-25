@@ -33,18 +33,18 @@ namespace WizardExample
         }
         public static readonly DependencyProperty WizardVMProperty = DependencyProperty.Register("WizardVM", typeof(IWizardViewModel), typeof(MainWindow));
 
-        private readonly WizardView CoffeeWizardView;
+        private readonly WizardView ExampleWizardView;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public MainWindow()
         {
             InitializeComponent();
             DataContext = this;
-            CoffeeWizardView = GetPlainWizardView();
+            ExampleWizardView = GetPlainWizardView();
 
             wizardHost.Children.Clear();
-            wizardHost.Children.Add(CoffeeWizardView);
-            this.FirePropsChanged(CoffeeWizardView.DataContext as IWizardViewModel);
+            wizardHost.Children.Add(ExampleWizardView);
+            this.FirePropsChanged(ExampleWizardView.DataContext as IWizardViewModel);
         }
 
         private void FirePropsChanged(IWizardViewModel wizardViewModel)
@@ -62,7 +62,7 @@ namespace WizardExample
 
             /// 2)
             /// Create / provide the steps for the wizard.  See comments in the CreateSteps method.
-            wizModel.ProvideSteps(CreateCoffeeSteps(wizModel.BusinessObject));
+            wizModel.ProvideSteps(CreateExampleSteps(wizModel.BusinessObject));
 
             /// 3)
             /// Create the actual wizard view / control.  Set it's DataContext to the WizardViewModel object created above.
@@ -74,7 +74,7 @@ namespace WizardExample
         /// </summary>
         /// <param name="genericModel">This is the instance created by the WizardViewModel</param>
         /// <returns></returns>
-        private static List<CompleteStep<GenericModel>> CreateCoffeeSteps(GenericModel genericModel)
+        private static List<CompleteStep<GenericModel>> CreateExampleSteps(GenericModel genericModel)
         {
             /// 2.1) Create a view model for each step.
             ///     Each of these descend from WizardStepViewModelBase
@@ -105,7 +105,12 @@ namespace WizardExample
             }
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnFinish_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
